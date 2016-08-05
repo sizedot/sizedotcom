@@ -1,0 +1,11 @@
+<% @showres.each do |p| %>
+    <%= p.brandname %>
+  <% @showresu.each do |t| %>
+        <%= t.division %>
+        <%= t.productname %>
+    <% @showresult.each do |s| %>
+            <%= s.sizename %>
+            <%= s.corsize %>
+    <% end %>
+  <% end %>
+<% end %>

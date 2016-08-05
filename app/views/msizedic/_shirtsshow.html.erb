@@ -1,0 +1,139 @@
+<div class="col s12 m7 tabletop" style="margin-left:2%; margin-right:2%; display:inline-block;">
+  <div class="card horizontal">
+    <table class="tabletop bordered striped centered responsive-table highlight" id="showtable" style="min-width:345px;">
+      <thead>
+        <tr class="frow" style="border-bottom-width:2px;">
+          <td class="fcol" colspan="7" style="line-height: 0px">
+            <b>
+              <% @showresu.each do |p| %>
+                  카테고리 분류 : <%= p.division %>
+              <% end %>
+            </b>
+          </td>
+        </tr>
+        <tr class="frow" style="border-bottom-width:2px;">
+          <td class="fcol showme" colspan="7" style="line-height: 0px">
+              <% @productsel.each do |p| %>
+                <p class="btntext">
+                  <input type="radio" name="psel" value="<%= p.productname %>" id="<%= p.productname %>" />
+                  <label for="<%= p.productname %>"><%= p.productname %></label>
+                </p>
+              <% end %>
+                <p class="btntext">
+                  <input type="radio" name="psel" value="average" id="average" />
+                  <label for="average">평균</label>
+                </p>
+          </td>
+        </tr>
+      </thead>
+      <tbody id="showcontent">
+        <tr class="frow">
+          <td class="fcol" style="border-left-width:0px;"><b>기준 사이즈</b></td>
+          <% @showresult.each do |p| %>
+          <td class="fcol"><%= p.sizename %></td>
+          <% end %>
+        </tr>
+        <tr class="frow" style="border-bottom-width:2px;">
+          <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>해당 브랜드 표기</b></td>
+          <% @showresult.each do |p| %>
+          <td class="fcol" style="line-height: 0px"><%= p.corsize %></td>
+          <% end %>
+        </tr>
+        <tr class="frow">
+          <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>가슴너비</b></td>
+          <% @showresult.each do |p| %>
+          <td class="fcol" style="line-height: 0px"><%= p.chestwidth %></td>
+          <% end %>
+        </tr>
+        <tr class="frow">
+          <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>어깨너비</b></td>
+          <% @showresult.each do |p| %>
+              <td class="fcol" style="line-height: 0px"><%= p.shoulderwidth %></td>
+          <% end %>
+        </tr>
+        <tr class="frow">
+          <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>총장</b></td>
+          <% @showresult.each do |p| %>
+          <td class="fcol" style="line-height: 0px"><%= p.totallength %></td>
+          <% end %>
+        </tr>
+        <tr class="frow">
+          <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>소매길이</b></td>
+          <% @showresult.each do |p| %>
+          <td class="fcol" style="line-height: 0px"><%= p.sleeve %><br></td>
+          <% end %>
+        </tr>
+        <tr class="frow" style="border-bottom-width:2px;">
+          <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>참조</b></td>
+          <td class="fcol" colspan="6" style="line-height: 0px">
+            <% @showresu.each do |p| %>
+            <p>[<%= p.productname %>] </p>
+            <% end %>
+          </td>
+        </tr>
+        <tr class="frow" style="border-bottom-width:2px;">
+          <td class="fcol" colspan="7">
+          <p style="line-height: 0px">* 소매길이는 어깨너비를 제외한 길이입니다.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<%= $pselect %><br>
+@showresul 검사 : <%= @showresul.inspect %>
+@showresult 검사 : <%= @showresult.inspect %>
+
+
+<style>
+  .tabletop{
+    display:table;
+    text-align:center;
+    vertical-align:center;
+  }
+
+  .btntext{
+    float:left;
+    margin-right:20px;
+    size:20px;
+    color:black;
+    display:inline-block;
+  }
+  /*.fcol{*/
+    /*display:table-cell;*/
+    /*text-align:center;*/
+    /*vertical-align:center;*/
+    /*border-color:#D0D0D0;*/
+    /*border-style:solid;*/
+    /*border-radius:0px;*/
+    /*border-width:0px;*/
+    /*border-left-width:1px;*/
+  /*}*/
+  /*.frow{*/
+    /*border-color:#D0D0D0;*/
+    /*border-style:solid;*/
+    /*border-radius:0px;*/
+    /*border-width:0px;*/
+    /*border-bottom-width:1px;*/
+  /*}*/
+</style>
+
+
+<script language="JavaScript">
+  $("#showcontent").hide();
+  //현재 페이지에서 카테고리를 선택하면 해당 카테고리 보여주는 폼이 나오도록하는 ajax
+//  $('.btntext').checked(function(){
+  $('.showme').click(function(){
+    var psel_info = $("input:radio[name='psel']:checked").val();
+    if (psel_info != "" || psel_info != null){
+      $.ajax({
+        method: "GET",
+        url: "/datashow",
+        data: {psel: psel_info}
+      })
+      $("#showcontent").show();
+    }
+  });
+</script>

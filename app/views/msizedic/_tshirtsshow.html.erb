@@ -1,0 +1,93 @@
+<div class="col s12 m7 tabletop" style="margin-left:2%; margin-right:2%; display:inline-block;">
+  <div class="card horizontal">
+    <table class="tabletop bordered striped centered responsive-table highlight">
+      <thead>
+        <tr class="frow" style="border-bottom-width:2px;">
+          <td class="fcol" colspan="7" style="line-height: 0px">
+            <b>
+              <% @showresu.each do |p| %>
+                  카테고리 분류 : <%= p.division %>
+              <% end %>
+            </b>
+          </td>
+        </tr>
+      </thead>
+      <tr class="frow">
+        <td class="fcol" style="border-left-width:0px;"><b>기준 사이즈</b></td>
+        <% @showresult.each do |p| %>
+            <td class="fcol"><%= p.sizename %></td>
+        <% end %>
+      </tr>
+      <tr class="frow" style="border-bottom-width:2px;">
+        <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>해당 브랜드 표기</b></td>
+        <% @showresult.each do |p| %>
+            <td class="fcol" style="line-height: 0px"><%= p.corsize %></td>
+        <% end %>
+      </tr>
+      <tr class="frow">
+        <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>가슴너비</b></td>
+        <% @showresult.each do |p| %>
+            <td class="fcol" style="line-height: 0px"><%= p.chestwidth %></td>
+        <% end %>
+      </tr>
+      <tr class="frow">
+        <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>어깨너비</b></td>
+        <% @showresult.each do |p| %>
+            <td class="fcol" style="line-height: 0px"><%= p.shoulderwidth %></td>
+        <% end %>
+      </tr>
+      <tr class="frow">
+        <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>총장</b></td>
+        <% @showresult.each do |p| %>
+            <td class="fcol" style="line-height: 0px"><%= p.totallength %></td>
+        <% end %>
+      </tr>
+      <tr class="frow">
+        <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>소매길이</b></td>
+        <% @showresult.each do |p| %>
+            <td class="fcol" style="line-height: 0px"><%= p.sleeve %><br></td>
+        <% end %>
+      </tr>
+
+      <tr class="frow" style="border-bottom-width:2px;">
+        <td class="fcol" style="border-left-width:0px; line-height: 0px"><b>참조</b></td>
+        <td class="fcol" colspan="6" style="line-height: 0px">
+          <% @showresu.each do |p| %>
+              <p>[<%= p.productname %>] </p>
+          <% end %>
+        </td>
+      </tr>
+      <tr class="frow" style="border-bottom-width:2px;">
+        <td class="fcol" colspan="7">
+          <p style="line-height: 0px">* 소매길이는 어깨너비를 제외한 길이입니다.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<style>
+  .tabletop{
+    display:table;
+    text-align:center;
+    vertical-align:center;
+  }
+  .fcol{
+    display:table-cell;
+    text-align:center;
+    vertical-align:center;
+    border-color:#D0D0D0;
+    border-style:solid;
+    border-radius:0px;
+    border-width:0px;
+    border-left-width:1px;
+  }
+  .frow{
+    border-color:#D0D0D0;
+    border-style:solid;
+    border-radius:0px;
+    border-width:0px;
+    border-bottom-width:1px;
+  }
+</style>

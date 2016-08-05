@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sizename: 1
+  corsize: MyString
+  waistwidth: 1.5
+  hipwidth: 1.5
+  thighwidth: 1.5
+  raiselength: 1.5
+  hemwidth: 1.5
+  totallength: 1.5
+
+two:
+  sizename: 1
+  corsize: MyString
+  waistwidth: 1.5
+  hipwidth: 1.5
+  thighwidth: 1.5
+  raiselength: 1.5
+  hemwidth: 1.5
+  totallength: 1.5

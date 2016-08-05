@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sizename: MyString
+  numbersize: 1
+  chestwidth: 1.5
+  sleeve: 1.5
+  totallength: 1.5
+  categorytop_id: 1
+
+two:
+  sizename: MyString
+  numbersize: 1
+  chestwidth: 1.5
+  sleeve: 1.5
+  totallength: 1.5
+  categorytop_id: 1

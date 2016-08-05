@@ -1,0 +1,16 @@
+<h3>현재까지 등록된 브랜드명</h3>
+<% @catet.each do |p| %>
+    <%= p.brandlist_id %>
+    <%= p.division %>
+    <%= p.productname %>
+    <%= p.id %><br>
+<% end %>
+
+<h5>xs사이즈</h5>
+<h6>
+  <%= @xssizename %>
+  <%= @xscornum %>
+  <%= @xschest %>
+  <%= @xslength %>
+  <%= @xssleeve %>
+</h6>
