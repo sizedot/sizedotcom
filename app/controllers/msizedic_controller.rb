@@ -1,33 +1,37 @@
 class MsizedicController < ApplicationController
   def branddic
-    if $category == "shirts" || $category == "tshirts" || $category == "knit"
-      @productsel = CategoryTop.where(division:$category)
-    elsif $category == "pants" || $category == "jeans"
-      @productsel = CategoryBottom.where(division:$category)
+
+    @showres = Brandlist.where(:brandname => $brandnames)
+    if $categories == "shirts" || $categories == "tshirts" || $categories == "knit"
+      @productsel = CategoryTop.where(:brandlist_id => @showres, :division => $categories)
+    elsif $categories == "pants" || $categories == "jeans"
+      @productsel = CategoryBottom.where(:brandlist_id => @showres, :division => $categories)
     end
 
-    @showres = Brandlist.where(:brandname => $brandname)
-    if $category == "shirts"
-      @showresu = CategoryTop.where(:brandlist_id => @showres)
+    if $categories == "shirts"
+      @showresu = CategoryTop.where(:brandlist_id => @showres, :productname => $pselect)
       @showresult = ShirtsSize.where(:categorytop_id => @showresu)
-    elsif $category == "tshirts"
+    elsif $categories == "tshirts"
       @showresu = CategoryTop.where(:brandlist_id => @showres)
       @showresult = TshirtsSize.where(:categorytop_id => @showresu)
-    elsif $category == "knit"
+    elsif $categories == "knit"
       @showresu = CategoryTop.where(:brandlist_id => @showres)
       @showresult = KnitSize.where(:categorytop_id => @showresu)
-    elsif $category == "pants"
+    elsif $categories == "pants"
       @showresu = CategoryBottom.where(:brandlist_id => @showres)
       @showresult = PantsSize.where(:categorybottom_id => @showresu)
-    elsif $category == "jeans"
+    elsif $categories == "jeans"
       @showresu = CategoryBottom.where(:brandlist_id => @showres)
       @showresult = JeansSize.where(:categorybottom_id => @showresu)
     end
   end
 
   def datashow
-    $brandname = params[:bsel]
-    $category = params[:csel]
+    $brandnames = params[:bsel2]
+    $categories = params[:csel2]
+  end
+
+  def datashow2
     $pselect = params[:psel]
   end
 
@@ -129,10 +133,6 @@ class MsizedicController < ApplicationController
     # elsif $category == "shoes"
     end
     redirect_to "/branddic"
-
-  end
-
-  def datalist  #본인이 올린 자료에 대해 게시판 형태로 선택할 수 있게 해주는
 
   end
 

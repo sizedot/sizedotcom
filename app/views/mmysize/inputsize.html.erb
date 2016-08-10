@@ -1,2 +1,51 @@
-<h1>Mmysize#inputsize</h1>
-<p>Find me in app/views/mmysize/inputsize.html.erb</p>
+<div stlye="display:inline-block;">
+  <div class="col s12 m7 tabletop" style="margin-left:2%; margin-right:2%; display:inline-block;">
+    <%= render partial: 'selectform' %>
+    <button class="reply_submit btn waves-effect waves-light" style="margin-top:-5px; float:right;" type="submit" name="action">확인
+    </button>
+
+    <div id="selectcontent" style="dispaly:inline-block;">
+      <div id="content1">
+        <div class="col s12 m7 tabletop" style="margin-left:2%; margin-right:2%; display:inline-block;">
+          <form id="form1" action="/datawrite">
+            <%= render partial: $category +'input' unless $category==nil %>
+            <button class="reply_submit2 btn waves-effect waves-light" style="margin-top:-5px; float:right;" type="submit" name="action">입력
+              <i class="material-icons right">send</i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script language="JavaScript">
+    //현재 페이지에서 카테고리를 선택하면 해당 카테고리 보여주는 폼이 나오도록하는 ajax
+    $('.reply_submit').click(function(){
+      var brand_info = $("input:radio[name='bsel']:checked").val();
+      var category_info = $("input:radio[name='csel']:checked").val();
+      var pname_info = $("input:text[name='productname']").val();
+
+      if (brand_info == ""||brand_info==null) {
+        (alert("브랜드를 설정해주세요."));
+        return;
+      }
+      else if (category_info == ""||category_info==null){
+        alert("카테고리를 설정해주세요.");
+        return;
+      }
+      else{
+        $("#form1").show();
+        $.ajax({
+          method: "GET",
+          url: "/datawrite",
+          data: {csel: category_info, bsel: brand_info},
+          success: function(){
+            var url = '/inputsize'; //please insert the url of the your current page here, we are assuming the url is 'index.php'
+            $('#selectcontent').load(url + ' #content1'); //note: the space before #div1 is very important
+          }
+        })
+      }
+    });
+    $("#form1").hide();
+  </script>

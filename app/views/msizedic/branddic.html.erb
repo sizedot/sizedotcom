@@ -1,13 +1,26 @@
 <div stlye="display:inline-block;">
   <div class="col s12 m7 tabletop" style="margin-left:2%; margin-right:2%; display:inline-block;">
       <%= render partial: 'selectform2' %>
-    <button class="reply_submit btn waves-effect waves-light" style="margin-top:-5px; float:right;" type="submit" name="action">확인
+    <button class="btn waves-effect waves-light" id="reply_submit" style="margin-top:-5px; float:right;" type="submit" name="action">확인
     </button>
   </div>
+</div>
+
+<div stlye="display:inline-block;">
   <div id="selectcontent" style="dispaly:inline-block;">
     <div id="content1">
       <div id="form1" class="col s12 m7 tabletop" style="margin-left:2%; margin-right:2%; display:inline-block;">
-          <%= render partial: $category +'show' unless $category==nil %>
+        <div class="card horizontal" id="showtable">
+          <%= render partial: 'showdic' unless $categories==nil %>
+        </div>
+      </div>
+    </div>
+
+    <div id="content2">
+      <div id="form2" class="col s12 m7 tabletop" style="margin-left:2%; margin-right:2%; display:inline-block;">
+        <div class="card horizontal" id="showcontent">
+          <%= render partial: $categories +'show' unless $categories==nil %>
+        </div>
       </div>
     </div>
   </div>
@@ -15,31 +28,58 @@
 
 
 <script language="JavaScript">
-  $("#form1").hide();
   //현재 페이지에서 카테고리를 선택하면 해당 카테고리 보여주는 폼이 나오도록하는 ajax
-  $('.reply_submit').click(function(){
-    var brand_info = $("input:radio[name='bsel']:checked").val();
-    var category_info = $("input:radio[name='csel']:checked").val();
+  $(document).ready(function () {
+    $('#form1').hide();
+    $('#form2').hide();
 
-    if (brand_info == ""||brand_info==null) {
-      (alert("브랜드를 설정해주세요."));
-      return;
-    }
-    else if (category_info == ""||category_info==null){
-      alert("카테고리를 설정해주세요.");
-      return;
-    }
-    else{
-      $("#form1").show();
-      $.ajax({
-      method: "GET",
-      url: "/datashow",
-      data: {csel: category_info, bsel: brand_info },
-      success: function(){
-        var url = '/branddic'; //please insert the url of the your current page here, we are assuming the url is 'index.php'
-        $('#selectcontent').load(url + ' #content1'); //note: the space before #div1 is very important
-        }
-      })
-    }
+      $("body").on('click', '#reply_submit', function () {
+      var brand_info = $("input:radio[name='bsel2']:checked").val();
+      var category_info = $("input:radio[name='csel2']:checked").val();
+
+      if (brand_info == ""||brand_info==null) {
+        (alert("브랜드를 설정해주세요."));
+        return;
+      }
+      else if (category_info == ""||category_info==null){
+        alert("카테고리를 설정해주세요.");
+        return;
+      }
+      else{
+        $.ajax({
+          method: "GET",
+          url: "/datashow",
+          data: {csel2: category_info, bsel2: brand_info},
+          success: function(){
+            $('#form1').show();
+            var url = '/branddic'; //please insert the url of the your current page here, we are assuming the url is 'index.php'
+            $('#form1').load(url + ' #showtable'); //note: the space before #div1 is very important
+
+            $("body").on('click', '#reply_sub', function () {
+              var psel_info = $("input:radio[name='psel']:checked").val();
+
+              if (psel_info == ""||psel_info==null) {
+                (alert("제품을 선택해주세요."));
+                return;
+              }
+              else{
+                $.ajax({
+                  url: "/datashow",
+                  data: {psel: psel_info},
+                  success: function(){
+                    (alert("값이 전송되었습니다. <%= $pselect %>"));
+                    $('#form2').show();
+                    var url = '/branddic'; //please insert the url of the your current page here, we are assuming the url is 'index.php'
+                    $('#form2').load(url + ' #showcontent'); //note: the space before #div1 is very important
+                  }
+                })
+              }
+            });
+          }
+        })
+      }
+    });
+
   });
+
 </script>

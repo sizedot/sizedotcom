@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brandname: MyString
+  division: MyString
+  productname: MyString
+  sizename: MyString
+  fit: MyString
+
+two:
+  brandname: MyString
+  division: MyString
+  productname: MyString
+  sizename: MyString
+  fit: MyString
