@@ -1,0 +1,105 @@
+
+    <div class="card horizontal">
+      <table class="tabletop bordered striped centered highlight">
+        <thead>
+          <tr class="frow" style="border-bottom-width:2px;">
+            <td class="fcol" colspan="7"><b>셔츠</b></td>
+          </tr>
+          <tr class="frow" style="border-bottom-width:2px;">
+            <td class="fcol" colspan="7">
+              <% @sizedicinfo.each do |p| %>
+                <p class="btntext">
+                  <input type="radio" name="pname" value="<%= p.productname %>" id="<%= p.productname %>" />
+                  <label for="<%= p.productname %>"><%= p.productname %></label>
+                </p>
+              <% end %>
+            </td>
+          </tr>
+        </thead>
+        <tr class="frow">
+          <td class="fcol" style="font-size:13px;"><b>기준 사이즈</b></td>
+          <% |p| %>
+            <td class="fcol">XS</td>
+          <% end %>
+        </tr>
+        <tr class="frow" style="border-bottom-width:2px;">
+          <td class="fcol" style="font-size:13px;"><b>해당 브랜드 표기</b></td>
+          <td class="fcol"><input type="text" name="xscornum" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="scornum" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="mcornum" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="lcornum" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="xlcornum" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol" style="border-right-width:0px;"><input type="text" name="xxlcornum" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+        </tr>
+        <tr class="frow">
+          <td class="fcol" style="font-size:13px;"><b>가슴 너비</b></td>
+          <td class="fcol"><input type="text" name="xschest" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="schest" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="mchest" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="lchest" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="xlchest" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol" style="border-right-width:0px;"><input type="text" name="xxlchest" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+        </tr>
+        <tr class="frow">
+          <td class="fcol" style="font-size:13px;"><b>어깨 너비</b></td>
+          <td class="fcol"><input type="text" name="xsshoulder" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="sshoulder" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="mshoulder" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="lshoulder" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="xlshoulder" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol" style="border-right-width:0px;"><input type="text" name="xxlshoulder" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+        </tr>
+        <tr class="frow">
+          <td class="fcol" style="font-size:13px;"><b>총장</b></td>
+          <td class="fcol"><input type="text" name="xslength" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="slength" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="mlength" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="llength" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="xllength" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol" style="border-right-width:0px;"><input type="text" name="xxllength" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+        </tr>
+        <tr class="frow">
+          <td class="fcol" style="font-size:13px;"><b>소매 길이</b></td>
+          <td class="fcol"><input type="text" name="xssleeve" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="ssleeve" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="msleeve" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="lsleeve" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol"><input type="text" name="xlsleeve" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+          <td class="fcol" style="border-right-width:0px;"><input type="text" name="xxlsleeve" style="width:30px; margin-top:-20px; margin-bottom:-20px;"></td>
+        </tr>
+
+        <tr class="frow" style="border-bottom-width:2px;">
+          <td class="fcol" colspan="7">
+            <p>* 해당 정보가 없는 경우 "-"를 입력해주세요.</p>
+            <p>* 소매길이는 어깨너비를 제외한 길이입니다.</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+
+<style>
+  .tabletop{
+    display:table;
+    text-align:center;
+    vertical-align:center;
+  }
+  .fcol{
+    display:table-cell;
+    text-align:center;
+    vertical-align:center;
+    border-color:#D0D0D0;
+    border-style:solid;
+    border-radius:0px;
+    border-width:0px;
+    border-right-width:1px;
+  }
+  .frow{
+    border-color:#D0D0D0;
+    border-style:solid;
+    border-radius:0px;
+    border-width:0px;
+    border-bottom-width:1px;
+  }
+</style>

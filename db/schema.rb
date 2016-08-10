@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803175335) do
+ActiveRecord::Schema.define(version: 20160809084303) do
 
   create_table "brandlists", force: :cascade do |t|
     t.string   "brandname"
@@ -105,6 +105,16 @@ ActiveRecord::Schema.define(version: 20160803175335) do
     t.integer  "categoryacc_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "sizedata", force: :cascade do |t|
+    t.string   "brandname"
+    t.string   "division"
+    t.string   "productname"
+    t.string   "sizename"
+    t.string   "fit"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "tshirts_sizes", force: :cascade do |t|

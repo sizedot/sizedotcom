@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'msizedic/branddic'
-
-  get 'msizedic/transfersize'
-
   root 'home#index'
   get 'index' => 'home#index'
   get 'useguide' => 'home#useguide'
@@ -18,6 +14,7 @@ Rails.application.routes.draw do
   get 'datawrite' => 'msizedic#datawrite'
   get 'datawrite2' => 'msizedic#datawrite2'
   get 'datashow' => 'msizedic#datashow'
+  get 'datashow2' => 'msizedic#datashow2'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
